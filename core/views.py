@@ -57,6 +57,11 @@ def index(request):
 
     return render(request, 'index.html', {'user_profile': user_profile, 'suggestions_username_profile_list': suggestions_username_profile_list[:4], 'posts':posts.order_by('-created_at')})
 
+def search(request, pk):
+    posts = Post.objects.filter(user=pk)
+    return render(request, 'search.html', {'posts':posts})
+
+
 @login_required(login_url='signin')
 def upload(request):
 

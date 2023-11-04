@@ -5,9 +5,6 @@ from datetime import datetime, timezone
 
 User = get_user_model()
 
-def getHoursSince(date):
-    return int(datetime.timedelta(days=date).total_seconds() // 3600)
-
 # Create your models here.
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

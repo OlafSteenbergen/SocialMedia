@@ -32,16 +32,19 @@
                         <!--<div class="triger" uk-toggle="target: #wrapper ; cls: sidebar-active">
                             <i class="uil-bars"></i>
                         </div>-->
-                            <div class="header_search">
-                                <input type="text" name="searchterm" placeholder="Search the site..">
-                                <div class="icon-search">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </div>
+
+                        <div class="header_search">
+                            <input type="text" placeholder="Search the site..">
+                            <div class="icon-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
                             </div>
+                        </div>
+                        <button type="submit" class="button bg-blue-700"> Go </button>
+
 
                     </div>
                     <div class="right-side lg:pr-4">
@@ -175,9 +178,7 @@
                                                 <img src="{{ user_profile.profileimg.url }}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                             </div>
                                         </a>
-                                        <a href="profile/{{post.user}}">
-                                            <span class="block capitalize font-semibold "> {{post.user}} </span>
-                                        </a>
+                                        <span class="block capitalize font-semibold "> {{post.user}} </span>
                                     </div>
                                 <div>
                                     <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
