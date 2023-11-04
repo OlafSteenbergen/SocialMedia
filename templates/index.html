@@ -32,6 +32,8 @@
                         <!--<div class="triger" uk-toggle="target: #wrapper ; cls: sidebar-active">
                             <i class="uil-bars"></i>
                         </div>-->
+                        <form action="search" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <div class="header_search">
                                 <input type="text" name="searchterm" placeholder="Search the site..">
                                 <div class="icon-search">
@@ -42,6 +44,8 @@
                                     </svg>
                                 </div>
                             </div>
+                            <button type="submit" class="button bg-blue-700"> Go </button>
+                        </form>
 
                     </div>
                     <div class="right-side lg:pr-4">
