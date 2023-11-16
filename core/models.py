@@ -43,6 +43,9 @@ class Post(models.Model):
         else:
             return str(round(hours_ago / 24)) + ' days ago'
 
+    def in_category(things, category):
+        return things.filter(category=category)
+    
 class LikePost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     username = models.CharField(max_length=100)
@@ -52,7 +55,7 @@ class LikePost(models.Model):
     
 class CommentPost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, default="X")
     comment = models.CharField(max_length=100)
     
     def __str__(self):

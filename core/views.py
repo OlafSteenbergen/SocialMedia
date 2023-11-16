@@ -17,9 +17,8 @@ def index(request):
     user_profile = Profile.objects.get(user=user_object)
     posts = Post.objects.all()
     all_users = Profile.objects.all()
-    comments = CommentPost.objects.all().select_related("post")
 
-    return render(request, 'index.html', {'user_profile': user_profile, 'posts':posts.order_by('-created_at'), 'all_users':all_users, 'comments':comments})
+    return render(request, 'index.html', {'user_profile': user_profile, 'posts':posts.order_by('-created_at'), 'all_users':all_users})
 
 def search(request):
     searchterm = request.POST['searchterm']
@@ -46,16 +45,38 @@ def search(request):
 def upload(request):
 
     if request.method == 'POST':
-        user = request.user.username
+        user_object = User.objects.get(username=request.user.username)
+        user_profile = Profile.objects.get(user=user_object)
+
         image = request.FILES.get('image_upload')
         caption = request.POST['caption']
+        location = request.POST['location']
 
-        new_post = Post.objects.create(user=user, image=image, caption=caption)
+
+        new_post = Post.objects.create(user=user_profile, image=image, caption=caption, location=location)
         new_post.save()
 
         return redirect('/')
     else:
         return redirect('/')
+
+@login_required(login_url='signin')
+def updatepost(request):
+    post_id = request.GET.get('post_id')
+    
+    if request.method == 'POST':
+        caption = request.POST['caption']
+        location = request.POST['location']
+    
+        Post.objects.filter(id=post_id).update(caption=caption, location=location)
+    
+    return redirect('/')
+
+@login_required(login_url='signin')
+def deletepost(request):
+    post_id = request.GET.get('post_id')
+    Post.objects.filter(id=post_id).delete()    
+    return redirect('/')
 
 @login_required(login_url='signin')
 def likepost(request):
@@ -83,22 +104,19 @@ def commentpost(request):
     username = request.user.username
     post_id = request.GET.get('post_id')
     comment = request.POST['comment']
-
-    post = Post.objects.get(id=post_id)
-
+    
     if not comment:
         messages.info(request, 'Empty comment, please type text.')
         return redirect('/')
     else:
-        new_comment = CommentPost.objects.create(post_id=post_id, username=username, comment=comment)
-        new_comment.save()
+        CommentPost.objects.create(post_id=post_id, username=username, comment=comment).save()
         return redirect('/')
 
 @login_required(login_url='signin')
 def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
-    user_posts = Post.objects.filter(user=pk)
+    user_posts = Post.objects.filter(user__user__username=pk)
 
     return render(request, 'profile.html', {'user_object': user_object,'user_profile': user_profile,'user_posts': user_posts})
 

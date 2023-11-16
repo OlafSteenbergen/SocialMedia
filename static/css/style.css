@@ -35,7 +35,6 @@ body {
     padding: 0;
     overflow-x: hidden;
     color: #545454;
-    background: #b0b3b8;
 }
 
 p {
@@ -263,7 +262,6 @@ section {
 .gray-bg {
     float: left;
     width: 100%;
-    background: #b0b3b8;
 }
 
 [type="submit"],
@@ -741,6 +739,7 @@ header.sticky {
 }
 
 .feature-photo {
+    margin-top: 15%;
     display: block;
     position: relative;
     width: 100%;
@@ -757,7 +756,7 @@ header.sticky {
 
 .user-avatar {
     border: 2px solid pink;
-    border-radius: 10px;
+    border-radius: 50%;
     border-right-color: #4680ff;
     border-top-color: #4680ff;
     border-left-color: pink;
@@ -779,7 +778,6 @@ header.sticky {
 }
 
 .timeline-info {
-    background: ##b0b3b8 none repeat scroll 0 0;
     display: block;
     line-height: 59px;
     width: 100%;
