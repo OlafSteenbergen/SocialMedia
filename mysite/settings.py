@@ -111,6 +111,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/assets')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+CSRF_TRUSTED_ORIGINS = ["https://social-media-production-948b.up.railway.app/"]
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
