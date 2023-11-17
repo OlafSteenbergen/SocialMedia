@@ -10,7 +10,6 @@ from collections import Counter
 
 
 # Create your views here.
-
 @login_required(login_url='signin')
 def index(request):
     user_object = User.objects.get(username=request.user.username)
