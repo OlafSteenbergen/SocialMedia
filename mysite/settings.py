@@ -18,7 +18,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-CSRF_TRUSTED_ORIGINS = ["https://social-media-production-948b.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ['https://social-media-production-948b.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
