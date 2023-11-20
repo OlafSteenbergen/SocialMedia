@@ -55,8 +55,8 @@ class LikePost(models.Model):
     
 class CommentPost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    username = models.CharField(max_length=100, default="X")
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     comment = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.username
+        return str(self.user)

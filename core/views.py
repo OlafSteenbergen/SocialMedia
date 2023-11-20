@@ -100,7 +100,7 @@ def likepost(request):
 
 @login_required(login_url='signin')
 def commentpost(request):
-    username = request.user.username
+    username = request.user.profile_set.first()
     post_id = request.GET.get('post_id')
     comment = request.POST['comment']
     
@@ -108,7 +108,7 @@ def commentpost(request):
         messages.info(request, 'Empty comment, please type text.')
         return redirect('/')
     else:
-        CommentPost.objects.create(post_id=post_id, username=username, comment=comment).save()
+        CommentPost.objects.create(post_id=post_id, user=username, comment=comment).save()
         return redirect('/')
 
 @login_required(login_url='signin')
