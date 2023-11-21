@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-y6on4&^y1+^c$5_h4eh-i2fz-c6jmagos9$5b!o!%8=08s#!tm
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = ['https://socialmedia-production-7b03.up.railway.app/']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
